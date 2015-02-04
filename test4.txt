@@ -1,0 +1,7 @@
+37 6
+.....................................
+.aaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbb.
+.aaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbb.
+.aaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbb.
+.aaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbb.
+.....................................

@@ -58,7 +58,7 @@ combineLines (oldSquares, oldLive) newLine = (updatedSquares ++ newSquares, oldL
 ------------------ Our main function, to do the work ------------------
 
 main = do
-	fileText <- readFile "test3.txt"
+	fileText <- readFile "test4.txt"
 	
 	let fileLines			= lines fileText
 	
