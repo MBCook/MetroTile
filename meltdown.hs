@@ -55,8 +55,8 @@ combineLines (oldSquares, oldLive) newLine = (updatedSquares ++ newSquares, oldL
 
 ------------------ Our main function, to do the work ------------------
 
-main = withFile "test4.txt" ReadMode $ \handle -> do
-	fileText <- hGetContents handle
+main = do
+	fileText <- readFile "test4.txt"
 	
 	let fileLines			= lines fileText
 	
