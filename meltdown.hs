@@ -4,6 +4,9 @@
 import Data.Maybe						-- To make Maybe handling easier
 import Data.List						-- So we can sort
 import System.IO						-- For file loading
+import Data.Ord (comparing)
+import Data.Monoid (<>)
+import Text.Printf (printf)
 
 ------------------ Some types we'll use ------------------
 
@@ -21,18 +24,13 @@ type DeadSquares = [Square]
 ------------------ Instances so we can show things easily, sort, and check equality ------------------
 
 instance Show Square where
-	show (Square c r w h ch)		= show w ++ "x" ++ show h ++ " tile of character '" ++
-										[ch] ++ "' located at (" ++ show c ++ "," ++ show r ++ ")"
+	show (Square c r w h ch) = printf "%dx%d tile of character '%c' located at (%d, %d)" w h ch c r
 
 instance Eq Square where
-	(==) (Square col _ _ _ ch) (Square col2 _ _ _ ch2)
-									= (col == col2) && (ch == ch2)
+	(Square col _ _ _ ch) == (Square col2 _ _ _ ch2) = (col == col2) && (ch == ch2)
 
 instance Ord Square where
-	x `compare` y = if byRow == EQ then byChar else byRow
-		where
-			byRow = (startColumn x) `compare` (startColumn y)
-			byChar = (theChar x) `compare` (theChar y)
+        compare = comparing startColumn <> comparing theChar
 									
 ------------------ Functions to do the work ------------------
 
@@ -70,4 +68,4 @@ main = do
 	
 	let sortedRows = sort (lastLive ++ lastDead)
 	
-	mapM (putStrLn . show) sortedRows
+	mapM print sortedRows
